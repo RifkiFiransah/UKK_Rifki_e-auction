@@ -2,6 +2,17 @@
 
 class Data_lelang extends CI_Controller
 {
+  public function __construct()
+  {
+    parent::__construct();
+
+    if (!$this->session->userdata('username')) {
+      redirect(base_url('auth/login_admin'));
+    } else if ($this->session->userdata('id_level') == 2) {
+      redirect(base_url('dashboard'));
+    }
+  }
+
   public function index()
   {
     $data['lelang'] = $this->M_lelang->tampil_data();
@@ -47,25 +58,6 @@ class Data_lelang extends CI_Controller
     redirect(base_url('data_lelang'));
   }
 
-  public function proses($id)
-  {
-    date_default_timezone_set('Asia/Jakarta');
-    $where = ['id_lelang' => $id];
-    $data = $this->M_barang->edit_data($where, 'tb_lelang');
-    $penawaran = $this->input->post('penawaran');
-
-    $where = [
-      'id_barang' => $id,
-      'id_lelang' => $id,
-      // 'tgl_lelang' => date('Y-m-d H:i:s'),
-      'id_user' => 1,
-      'penawaran_harga' => $penawaran,
-    ];
-
-    $this->db->insert('history_lelang', $where);
-    redirect(base_url('data_lelang'));
-  }
-
   public function penawaran()
   {
     $nama_barang = $this->input->post('nama_barang');
@@ -107,6 +99,7 @@ class Data_lelang extends CI_Controller
     $status = $this->input->post('status');
 
     $data = [
+      'id_lelang' => $id_barang,
       'id_barang' => $id_barang,
       'tgl_lelang' => date('Y-m-d H:i:s'),
       'harga_akhir' => $harga_akhir,

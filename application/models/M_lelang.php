@@ -26,4 +26,24 @@ class M_lelang extends CI_Model
     $this->db->where($where);
     $this->db->update($table, $data);
   }
+
+  public function tampil_detail($id)
+  {
+    $result = $this->db->where('id_lelang', $id)->join('tb_barang', 'tb_barang.id_barang=tb_lelang.id_lelang')->get('tb_lelang');
+    if ($result->num_rows() > 0) {
+      return $result->result();
+    } else {
+      return false;
+    }
+  }
+
+  public function tampil_data_buka()
+  {
+    $result = $this->db->where('status', 'dibuka')->join('tb_barang', 'tb_barang.id_barang=tb_lelang.id_barang')->get('tb_lelang');
+    if ($result->num_rows() > 0) {
+      return $result->result();
+    } else {
+      return [];
+    }
+  }
 }

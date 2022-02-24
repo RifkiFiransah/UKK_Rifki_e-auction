@@ -2,6 +2,17 @@
 
 class Data_admin extends CI_Controller
 {
+  public function __construct()
+  {
+    parent::__construct();
+
+    if (!$this->session->userdata('id_level')) {
+      redirect(base_url('auth/login_admin'));
+    } else if ($this->session->userdata('id_level') == 1) {
+      redirect(base_url('dashboard'));
+    }
+  }
+
   public function index()
   {
     $data['admin'] = $this->M_admin->tampil_data();

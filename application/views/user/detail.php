@@ -9,6 +9,12 @@
   <!-- Bootstrap CSS -->
   <link href="<?= base_url('assets/'); ?>css/sb-admin-2.min.css" rel="stylesheet">
 
+  <style>
+    body {
+      background-color: #398AB9;
+    }
+  </style>
+
   <title>Halaman awal</title>
 </head>
 

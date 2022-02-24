@@ -44,7 +44,6 @@
           <a href="<?= base_url('data_lelang/aksi_tutup/' . $llng->id_lelang); ?>" class="btn btn-sm btn-danger">Tutup</a>
         </td>
         <td>
-          <a href="<?= base_url('data_lelang/proses/' . $llng->id_lelang); ?>" class="btn btn-success btn-sm">Proses</a>
           <a href="<?= base_url('data_lelang/edit/' . $llng->id_lelang); ?>" class="btn btn-primary btn-sm"><i class="fas fa-edit"></i></a>
           <a href="<?= base_url('data_lelang/hapus/' . $llng->id_lelang); ?>" class="btn btn-danger btn-sm" onclick="return confirm('apakah anda yakin ingin menghapus?');"><i class="fas fa-trash"></i></a>
         </td>

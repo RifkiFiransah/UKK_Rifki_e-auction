@@ -19,7 +19,7 @@
                   <?= $this->session->flashdata('pesan'); ?>
                   <form method="post" action="<?= base_url('auth/administrator'); ?>" class="user">
                     <div class="form-group">
-                      <input type="tet" class="form-control form-control-user" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Masukan username anda..." name="username">
+                      <input type="tet" class="form-control form-control-user" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Masukan username anda..." name="username" autocomplete="off" autofocus>
                       <?= form_error('username', '<div class="text-danger small ml-2">', '</div>'); ?>
                     </div>
                     <div class="form-group">

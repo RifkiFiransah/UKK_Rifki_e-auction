@@ -28,14 +28,6 @@ class Auth extends CI_Controller
         $this->session->set_userdata('id_user', $auth->id_user);
 
         redirect(base_url('user'));
-        // switch ($auth->role_id) {
-        //   case 1:
-        //     redirect('admin/Dash_admin');
-        //     break;
-        //   case 2:
-        //     redirect('welcome');
-        //     break;
-        // }
       }
     }
   }

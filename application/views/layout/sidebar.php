@@ -55,7 +55,7 @@
       <?php } ?>
       <li class="nav-item">
         <a class="nav-link collapsed" href="<?= base_url('data_user'); ?>" aria-expanded="true" aria-controls="collapseTwo">
-          <i class="fas fa-fw fa-download"></i>
+          <i class="fas fa-user-circle"></i>
           <span>Data User dan Masyarakat</span>
         </a>
       </li>

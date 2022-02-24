@@ -1,4 +1,4 @@
-<footer class="sticky-footer bg-dark text-light" style="height: 50px;padding: 15px;">
+<footer class="sticky-footer text-light" style="height: 50px;padding: 15px;background-color: #524A4E;">
   <div class="container-fluid">
     <div class="copyright text-center">
       <span>Copyright &copy; Rifki Firansah UJIKOM 2022</span>

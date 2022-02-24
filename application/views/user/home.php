@@ -11,7 +11,7 @@
 
   <style>
     body {
-      background-image: linear-gradient(to right, blue, cyan);
+      background-color: #398AB9;
     }
 
     .jumbo {
@@ -33,13 +33,17 @@
       font-size: 1.8em;
       text-shadow: 3px 5px 3px black;
     }
+
+    .navigasi {
+      background-color: #085E7D;
+    }
   </style>
 
   <title>Halaman Home</title>
 </head>
 
 <body>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark bg-opacity-50">
+  <nav class="navbar navbar-expand-lg navbar-dark navigasi">
     <div class="container-fluid">
       <a class="navbar-brand mr-5" href="<?= base_url(); ?>" style="text-transform: uppercase; font-family:cursive; font-weight: 800; font-size: 1.5em; letter-spacing: 2px;">Sistem Lelang</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
@@ -49,6 +53,7 @@
         <div class="navbar-nav">
           <a class="nav-link active" aria-current="page" href="<?= base_url(); ?>">Daftar Lelang</a>
           <a class="nav-link active" aria-current="page" href="<?= base_url('user/history'); ?>">History</a>
+          <a class="nav-link active" aria-current="page" href="<?= base_url('user/profile/' . $this->session->userdata('id_user')); ?>">Profile</a>
         </div>
 
       </div>
