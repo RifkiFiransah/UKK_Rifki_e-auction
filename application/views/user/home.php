@@ -43,6 +43,7 @@
 </head>
 
 <body>
+  <?= $this->session->flashdata('pesan'); ?>
   <nav class="navbar navbar-expand-lg navbar-dark navigasi">
     <div class="container-fluid">
       <a class="navbar-brand mr-5" href="<?= base_url(); ?>" style="text-transform: uppercase; font-family:cursive; font-weight: 800; font-size: 1.5em; letter-spacing: 2px;">Sistem Lelang</a>
@@ -52,8 +53,7 @@
       <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div class="navbar-nav">
           <a class="nav-link active" aria-current="page" href="<?= base_url(); ?>">Daftar Lelang</a>
-          <a class="nav-link active" aria-current="page" href="<?= base_url('user/history'); ?>">History</a>
-          <a class="nav-link active" aria-current="page" href="<?= base_url('user/profile/' . $this->session->userdata('id_user')); ?>">Profile</a>
+          <a class="nav-link active" aria-current="page" href="<?= base_url('user/history/' . $this->session->userdata('id_user')); ?>">History</a>
         </div>
 
       </div>
@@ -77,7 +77,7 @@
             <div class="card-body">
               <h5 class="card-title"><?= $brng->nama_barang; ?></h5>
               <p class="card-text"><?= $brng->deskripsi_barang; ?></p>
-              <a href="<?= base_url('user/detail/'); ?><?= $brng->id_barang; ?>" class="btn btn-success">Detail</a>
+              <a href="<?= base_url('user/detail/'); ?><?= $brng->id_lelang; ?>" class="btn btn-success">Detail</a>
             </div>
           </div>
         </div>

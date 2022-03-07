@@ -17,6 +17,7 @@
             <div class="col mr-2">
               <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
                 Data Barang</div>
+              <div class="h5 mb-0 font-weight-bold text-gray-800">(<?= count($barang); ?>)</div>
             </div>
             <div class="col-auto">
               <i class="fas fa-book fa-2x text-gray-300"></i>
@@ -34,6 +35,7 @@
               <div class="col mr-2">
                 <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
                   Data Lelang</div>
+                <div class="h5 mb-0 font-weight-bold text-gray-800">(<?= count($lelang); ?>)</div>
               </div>
               <div class="col-auto">
                 <i class="fas fa-university fa-2x text-gray-300"></i>
@@ -50,6 +52,7 @@
               <div class="col mr-2">
                 <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
                   Data Administrator</div>
+                <div class="h5 mb-0 font-weight-bold text-gray-800">(<?= count($admin); ?>)</div>
               </div>
               <div class="col-auto">
                 <i class="fas fa-fw fa-user-friends fa-2x text-gray-300"></i>
@@ -68,6 +71,7 @@
             <div class="col mr-2">
               <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Data User
               </div>
+              <div class="h5 mb-0 font-weight-bold text-gray-800">(<?= count($user); ?>)</div>
             </div>
             <div class="col-auto">
               <i class="fas fa-user-circle fa-2x text-gray-300"></i>
@@ -84,7 +88,7 @@
           <div class="row no-gutters align-items-center">
             <div class="col mr-2">
               <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
-                Logout</div>
+                Laporan</div>
             </div>
             <div class="col-auto">
               <i class="fas fa-fw fa-sign-out-alt fa-2x text-gray-300"></i>

@@ -59,9 +59,9 @@
   <div class="container-fluid mt-3" style="height: 730%;">
     <div class="row">
       <div class="col">
-        <table class="table table-bordered">
+        <table class="table table-striped table-bordered">
           <tr>
-            <th>No</th>
+            <th>No ID</th>
             <th>Nama Lengkap</th>
             <th>Username</th>
             <th>Telp</th>
@@ -69,7 +69,7 @@
 
           <?php foreach ($user as $row) : ?>
             <tr>
-              <td>1</td>
+              <td><?= $row->id_user; ?></td>
               <td><?= $row->nama_lengkap; ?></td>
               <td><?= $row->username; ?></td>
               <td><?= $row->telp; ?></td>

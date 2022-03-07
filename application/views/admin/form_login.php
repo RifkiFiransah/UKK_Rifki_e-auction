@@ -26,12 +26,13 @@
                       <input type="password" class="form-control form-control-user" id="exampleInputPassword" placeholder="Password..." name="password">
                       <?= form_error('password', '<div class="text-danger small ml-2">', '</div>'); ?>
                     </div>
-                    <div class="form-group">
+                    <!-- <div class="form-group">
                       <select name="level" id="level" class="form-control rounded-pill">
+                        <option value="">Pilih</option>
                         <option value="1">Petugas</option>
                         <option value="2">Admin</option>
                       </select>
-                    </div>
+                    </div> -->
                     <button type="submit" class="btn btn-primary form-control">Login</button>
                   </form>
                 </div>

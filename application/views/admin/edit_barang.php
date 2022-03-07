@@ -2,13 +2,18 @@
   <h3><i class="fas fa-edit"></i> Edit Barang</h3>
 
   <?php foreach ($barang as $brng) : ?>
-    <form action="<?= base_url('data_barang/update_data'); ?>" method="POST">
+    <form action="<?= base_url('data_barang/update_data'); ?>" method="POST" enctype="multipart/form-data">
       <input type="hidden" name="id_barang" value="<?= $brng->id_barang; ?>">
-      <input type="hidden" name="gambar" value="<?= $brng->gambar; ?>">
+      <input type="hidden" name="gambarLama" value="<?= $brng->gambar; ?>">
 
       <div class="form-group">
         <label for="nama">Nama Barang</label>
         <input type="text" name="nama_barang" id="nama" value="<?= $brng->nama_barang; ?>" class="form-control">
+      </div>
+
+      <div class="form-group">
+        <label for="gambar">Gambar</label>
+        <input type="file" name="gambar" id="gambar" class="form-control">
       </div>
 
       <div class="form-group">

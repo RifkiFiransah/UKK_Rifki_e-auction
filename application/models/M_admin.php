@@ -18,4 +18,15 @@ class M_admin extends CI_Model
   {
     return $this->db->get('tb_masyarakat')->result();
   }
+
+  public function tampil_admin($id)
+  {
+    return $this->db->get_where('tb_petugas', $id)->result();
+  }
+
+  public function update_data($data, $where, $table)
+  {
+    $this->db->where($where);
+    $this->db->update($table, $data);
+  }
 }

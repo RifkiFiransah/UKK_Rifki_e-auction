@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="utf-8">
-  <title>Data Laporan</title>
+  <title>Data Laporan Buku</title>
 
   <!-- Normalize or reset CSS with your favorite library -->
   <link href="<?= base_url('assets/'); ?>css/sb-admin-2.min.css" rel="stylesheet">
@@ -29,11 +29,11 @@
       font-size: 16px;
     }
 
-    * {
+    /* * {
       font-family: Calibri;
       font-size: 14px;
       -webkit-print-color-adjust: exact;
-    }
+    } */
 
     .table {
       border: solid 1px #DDEEEE;
@@ -75,12 +75,12 @@
         <thead>
           <tr>
             <th style="width: 10px">No</th>
-            <th>Nama Lengkap</th>
-            <th>Telp</th>
             <th>Nama Barang</th>
-            <th>Tanggal</th>
-            <th>Penawaran Harga</th>
-            <th>Status</th>
+            <th>Tanggal Lelang</th>
+            <th>Harga Awal</th>
+            <th>Harga Akhir</th>
+            <th>Pemenang Lelang</th>
+            <th>No.Telepon</th>
           </tr>
         </thead>
         <tbody>
@@ -88,22 +88,18 @@
           <?php foreach ($history as $row) : ?>
             <tr>
               <td><?= $i++; ?></td>
-              <td><?= $row->nama_lengkap; ?></td>
-              <td><?= $row->telp; ?></td>
               <td><?= $row->nama_barang; ?></td>
               <td><?= $row->tgl_lelang; ?></td>
-              <td>Rp. <?= number_format($row->penawaran_harga, 0, ',', '.'); ?></td>
-              <td><?= $row->status; ?></td>
+              <td><?= 'Rp. ' . number_format($row->harga_awal, 0, ',', '.'); ?></td>
+              <td><?= 'Rp. ' . number_format($row->harga_akhir, 0, ',', '.'); ?></td>
+              <td><?= $row->nama_lengkap; ?></td>
+              <td><?= $row->telp; ?></td>
             </tr>
           <?php endforeach; ?>
         </tbody>
     </div>
     </table>
   </section>
-  <script type="text/javascript">
-    window.print();
-    window.onafterprint = window.close;
-  </script>
 </body>
 
 </html>

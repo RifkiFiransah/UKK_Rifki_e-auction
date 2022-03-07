@@ -4,11 +4,13 @@ class M_lelang extends CI_Model
 {
   public function tampil_data()
   {
-    return $this->db->from('tb_lelang')
-      ->join('tb_barang', 'tb_barang.id_barang=tb_lelang.id_barang')
-      ->join('tb_masyarakat', 'tb_masyarakat.id_user=tb_lelang.id_user')
-      ->join('tb_petugas', 'tb_petugas.id_petugas=tb_lelang.id_petugas')
-      ->get()->result();
+    return $this->db->query("SELECT * FROM tb_lelang INNER JOIN tb_barang ON tb_lelang.id_barang = tb_barang.id_barang LEFT JOIN tb_masyarakat ON tb_lelang.id_user = tb_masyarakat.id_user INNER JOIN tb_petugas ON tb_lelang.id_petugas = tb_petugas.id_petugas")->result();
+
+    // return $this->db->from('tb_lelang')
+    //   ->join('tb_barang', 'tb_barang.id_barang=tb_lelang.id_barang')
+    //   ->join('tb_masyarakat', 'tb_masyarakat.id_user=tb_lelang.id_user')
+    //   ->join('tb_petugas', 'tb_petugas.id_petugas=tb_lelang.id_petugas')
+    //   ->get()->result();
   }
 
   public function input_data($data, $tabel)
@@ -29,7 +31,7 @@ class M_lelang extends CI_Model
 
   public function tampil_detail($id)
   {
-    $result = $this->db->where('id_lelang', $id)->join('tb_barang', 'tb_barang.id_barang=tb_lelang.id_lelang')->get('tb_lelang');
+    $result = $this->db->where('id_lelang', $id)->join('tb_barang', 'tb_barang.id_barang=tb_lelang.id_barang')->get('tb_lelang');
     if ($result->num_rows() > 0) {
       return $result->result();
     } else {

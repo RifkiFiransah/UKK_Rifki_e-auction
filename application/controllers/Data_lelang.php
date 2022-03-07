@@ -58,30 +58,11 @@ class Data_lelang extends CI_Controller
     redirect(base_url('data_lelang'));
   }
 
-  public function penawaran()
-  {
-    $nama_barang = $this->input->post('nama_barang');
-    $id_barang = $this->input->post('id_barang');
-    $id_user = $this->input->post('id_user');
-    $tawaran = $this->input->post('tawaran');
-
-    $data = [
-      'id_barang' => $id_barang,
-      'id_user' => $id_user,
-      'id_petugas' => 1,
-      'harga_akhir' => $tawaran,
-      'tgl_lelang' => date('Y-m-d H:m:s'),
-      'status' => 'dibuka'
-    ];
-
-    $this->db->insert('tb_lelang', $data);
-    redirect(base_url());
-  }
-
   public function hapus($id)
   {
-    $where = ['id_lelang' => $id];
-    $this->db->where($where)->delete('tb_lelang');
+    // $where = ['id_lelang' => $id];
+    // $this->db->where($where)->delete('tb_lelang');
+    $this->db->query("DELETE FROM tb_lelang WHERE id_lelang=$id");
     $this->session->set_flashdata('pesan', '<div class="alert alert-danger alert-dismissible fade show" role="alert">
     Data Berhasil dihapus
     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -99,12 +80,9 @@ class Data_lelang extends CI_Controller
     $status = $this->input->post('status');
 
     $data = [
-      'id_lelang' => $id_barang,
       'id_barang' => $id_barang,
       'tgl_lelang' => date('Y-m-d H:i:s'),
-      'harga_akhir' => $harga_akhir,
-      'id_user' => 1,
-      'id_petugas' => 1,
+      'id_petugas' => $this->session->userdata('id_petugas'),
       'status' => $status
     ];
     $this->session->set_flashdata('pesan', '<div class="alert alert-success alert-dismissible fade show" role="alert">
@@ -134,13 +112,20 @@ class Data_lelang extends CI_Controller
   public function update_data()
   {
     $id = $this->input->post('id_lelang');
+    $status = $this->input->post('status');
     $where = ['id_lelang' => $id];
     $data = [
-      'id_barang' => $this->input->post('id_barang'),
       'tgl_lelang' => $this->input->post('tgl_lelang'),
-      'harga_akhir' => $this->input->post('harga_akhir'),
-      'status' => $this->input->post('status')
+      'status' => $status
     ];
+    $this->M_lelang->update_lelang($where, $data, 'tb_lelang');
+    if ($status == 'ditutup') {
+      $ambil = $this->M_history->get_harga_tertinggi($id);
+
+      if ($ambil) {
+        $this->M_penawaran->add_penawaran($id, $ambil->id_user, $ambil->penawaran_harga);
+      }
+    }
     $this->session->set_flashdata('pesan', '<div class="alert alert-primary alert-dismissible fade show" role="alert">
     Data Berhasil diedit
     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -148,7 +133,16 @@ class Data_lelang extends CI_Controller
     </button>
   </div>');
 
-    $this->M_lelang->update_lelang($where, $data, 'tb_lelang');
     redirect(base_url('data_lelang'));
+  }
+
+  public function detail($id)
+  {
+    $data['lelang'] = $this->M_history->tampil_id($id);
+
+    $this->load->view('layout/header');
+    $this->load->view('layout/sidebar');
+    $this->load->view('admin/detail_lelang', $data);
+    $this->load->view('layout/footer');
   }
 }

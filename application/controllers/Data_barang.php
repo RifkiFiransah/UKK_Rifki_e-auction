@@ -95,7 +95,22 @@ class Data_barang extends CI_Controller
     $tgl = $this->input->post('tgl');
     $harga_awal = $this->input->post('harga_awal');
     $deskripsi_barang = $this->input->post('deskripsi_barang');
-    $gambar = $this->input->post('gambar');
+    $gambar_lama = $this->input->post('gambarLama');
+    $gambar = $_FILES['gambar']['name'];
+
+    if ($gambar === '') {
+      $gambar = $this->input->post('gambarLama');
+    } else {
+      $config['upload_path'] = './assets/img';
+      $config['allowed_types'] = 'jpg|jpeg|png';
+
+      $this->load->library('upload', $config);
+      if (!$this->upload->do_upload('gambar')) {
+        echo 'gagal';
+      } else {
+        $gambar = $this->upload->data('file_name');
+      }
+    }
 
     $where = ['id_barang' => $id_barang];
     $data = [

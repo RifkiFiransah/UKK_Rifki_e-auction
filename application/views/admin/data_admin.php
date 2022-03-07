@@ -24,7 +24,7 @@
         <td><?= $row->level; ?></td>
         <td class="text-center">
           <a href="<?= base_url('data_admin/hapus/' . $row->id_petugas); ?>" class="btn btn-sm btn-danger" onclick="return confirm('Yakin ingin menghapus data ini');"><i class="fas fa-trash"></i> Hapus</a>
-          <a href="<?= base_url('data_admin/hapus/' . $row->id_petugas); ?>" class="btn btn-sm btn-primary" onclick="return confirm('Yakin ingin menghapus data ini');"><i class="fas fa-edit"></i> Edit</a>
+          <a href="<?= base_url('data_admin/edit/' . $row->id_petugas); ?>" class="btn btn-sm btn-primary"><i class="fas fa-edit"></i> Edit</a>
         </td>
       </tr>
     <?php endforeach; ?>

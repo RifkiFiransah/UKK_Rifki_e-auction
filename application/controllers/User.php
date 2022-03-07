@@ -23,20 +23,23 @@ class User extends CI_Controller
   {
     // $where = ['id_barang' => $id];
     $data['barang'] = $this->M_lelang->tampil_detail($id);
+    $data['history'] = $this->M_history->tampil_id($id);
+
     $this->load->view('user/detail', $data);
     $this->load->view('user/footer');
   }
 
-  public function history()
+  public function history($id)
   {
-    $data['history'] = $this->M_history->tampil_data();
+    $data['history'] = $this->M_history->tampil_id_user($id);
     $this->load->view('user/history', $data);
     $this->load->view('user/footer');
   }
 
   public function tawar($id)
   {
-    $data['barang'] = $this->M_barang->tampil_id($id);
+
+    $data['barang'] = $this->M_lelang->tampil_detail($id);
     $this->load->view('user/penawaran', $data);
     $this->load->view('user/footer');
   }
@@ -49,5 +52,28 @@ class User extends CI_Controller
 
     $this->load->view('user/profile', $data);
     $this->load->view('user/footer');
+  }
+
+  public function penawaran()
+  {
+    if ($this->input->post('penawaran') > $this->input->post('harga_awal')) {
+      $id_user = $this->input->post('id_user');
+      $id_barang = $this->input->post('id_barang');
+      $id_lelang = $this->input->post('id_lelang');
+      $penawaran = $this->input->post('penawaran');
+
+      $data = [
+        'id_lelang' => $id_lelang,
+        'id_barang' => $id_barang,
+        'id_user' => $id_user,
+        'penawaran_harga' => $penawaran
+      ];
+      $this->M_history->penawaran_data($data, 'history_lelang');
+
+      $this->session->set_flashdata('pesan', "<script>alert('Penawaran Berhasil di ajukan')</script>");
+    } else {
+      $this->session->set_flashdata('pesan', "<script>alert('Penawaran Gagal di ajukan')</script>");
+    }
+    redirect(base_url('user'));
   }
 }
