@@ -48,7 +48,7 @@
 <body>
   <nav class="navbar navbar-expand-lg navbar-dark navigasi">
     <div class="container-fluid">
-      <a class="navbar-brand mr-5" href="<?= base_url(); ?>" style="text-transform: uppercase; font-family:cursive; font-weight: 800; font-size: 1.5em; letter-spacing: 2px;"><i class="fas fa-duotone fa-motorcycle"></i> Ngab auction</a>
+      <a class="navbar-brand mr-5" href="https://instagram.com/rifki.firansah_" style="text-transform: uppercase; font-family:cursive; font-weight: 800; font-size: 1.5em; letter-spacing: 2px;"><i class="fas fa-duotone fa-motorcycle"></i> Ngab auction</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -56,6 +56,7 @@
         <div class="navbar-nav">
           <a class="nav-link active" aria-current="page" href="<?= base_url(); ?>">Daftar Lelang</a>
           <a class="nav-link active" aria-current="page" href="<?= base_url('user/history/' . $this->session->userdata('id_user')); ?>">History</a>
+          <a href="<?= base_url('user/pemenang'); ?>" class="nav-link active">Daftar Pemenang</a>
         </div>
 
       </div>

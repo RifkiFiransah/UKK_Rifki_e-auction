@@ -71,4 +71,12 @@ class User extends CI_Controller
     }
     redirect(base_url('user/detail/' . $id_lelang));
   }
+
+  public function pemenang()
+  {
+    $data['pemenang'] = $this->M_laporan->get_data();
+
+    $this->load->view('user/daftar_pemenang', $data);
+    $this->load->view('user/footer');
+  }
 }

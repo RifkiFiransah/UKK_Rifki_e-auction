@@ -56,27 +56,29 @@
     </div>
   </nav>
 
-  <h1 class="text-center" style="font-size: 2.5em; text-transform:uppercase; font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif; margin-top: 20px; word-spacing: 4px; letter-spacing: 1px;">Daftar History Penawaran Lelang</h1>
+  <h1 class="text-center" style="font-size: 2.5em; text-transform:uppercase; font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif; margin-top: 20px; word-spacing: 4px; letter-spacing: 1px;">Daftar Pemenang Lelang</h1>
   <div class="container-fluid mt-3" style="height: 800%;">
     <div class="row">
       <div class="col">
-        <table class="table table-striped">
-          <tr>
+        <table class="table table-bordered">
+          <tr class="bg-info text-light">
             <th>No</th>
-            <th>Tanggal Lelang</th>
             <th>Nama Barang</th>
+            <th>Tanggal Lelang</th>
             <th>Harga Awal</th>
-            <th>Penawaran Harga</th>
+            <th>Harga Akhir</th>
+            <th>Pemenang Lelang</th>
           </tr>
 
           <?php $i = 1; ?>
-          <?php foreach ($history as $row) : ?>
+          <?php foreach ($pemenang as $row) : ?>
             <tr>
               <td><?= $i++; ?></td>
-              <td><?= $row->tgl_lelang; ?></td>
               <td><?= $row->nama_barang; ?></td>
-              <td><?= $row->harga_awal; ?></td>
-              <td>Rp. <?= number_format($row->penawaran_harga, 0, ',', '.'); ?></td>
+              <td><?= $row->tgl_lelang; ?></td>
+              <td>Rp. <?= number_format($row->harga_awal, 0, ',', '.'); ?></td>
+              <td>Rp. <?= number_format($row->harga_akhir, 0, ',', '.'); ?></td>
+              <td><?= $row->nama_lengkap; ?></td>
             </tr>
           <?php endforeach; ?>
         </table>
