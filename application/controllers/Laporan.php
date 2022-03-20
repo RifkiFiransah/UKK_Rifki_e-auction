@@ -21,7 +21,7 @@ class Laporan extends CI_Controller
 
   public function laporan()
   {
-    $data['history'] = $this->M_history->tampil_data();
+    $data['history'] = $this->M_laporan->get_data();
     $this->load->view('admin/laporan', $data);
   }
 }

@@ -29,4 +29,15 @@ class M_admin extends CI_Model
     $this->db->where($where);
     $this->db->update($table, $data);
   }
+
+  public function cekUsername($username)
+  {
+    $result = $this->db->where('username', $username)->limit(1)->get('tb_petugas');
+
+    if ($result->num_rows() > 0) {
+      return $result->row();
+    } else {
+      return [];
+    }
+  }
 }

@@ -8,6 +8,8 @@
 
   <!-- Bootstrap CSS -->
   <link href="<?= base_url('assets/'); ?>css/sb-admin-2.min.css" rel="stylesheet">
+  <link href="<?= base_url('assets/'); ?>vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
   <style>
     .kartu {
@@ -35,7 +37,7 @@
       <div class="col-lg-12" style="height: 500px;">
         <div class="card mx-auto my-3 kartu" style="width: 30rem;">
           <div class="card-body">
-            <h2 class="card-title text-center mb-5">Login Sistem Lelang</h2>
+            <h2 class="card-title text-center mb-5"><i class="fas fa-duotone fa-motorcycle"></i> Ngab Auction</h2>
             <?= $this->session->flashdata('pesan'); ?>
             <form action="<?= base_url('auth/login'); ?>" class="user mt-3 mb-3" method="post">
               <div class="form-group">

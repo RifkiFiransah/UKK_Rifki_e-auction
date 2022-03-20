@@ -48,4 +48,14 @@ class M_lelang extends CI_Model
       return [];
     }
   }
+
+  public function delete_lelang($id, $table)
+  {
+    // $this->db->from($table);
+    // $this->db->join('history_lelang', 'history_lelang.id_lelang=tb_lelang.id_lelang');
+    // $this->db->where('id_lelang', $id);
+    // $this->db->delete($table);
+    $this->db->where('id_lelang', $id);
+    $this->db->delete($table);
+  }
 }

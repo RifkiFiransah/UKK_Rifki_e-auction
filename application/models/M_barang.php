@@ -7,6 +7,11 @@ class M_barang extends CI_Model
     return $this->db->get('tb_barang');
   }
 
+  public function tampil_belum_lelang()
+  {
+    return $this->db->query("SELECT tb_lelang.*,tb_barang.nama_barang, tb_barang.id_barang as id_barang FROM tb_barang LEFT JOIN tb_lelang ON tb_barang.id_barang = tb_lelang.id_barang WHERE id_lelang IS NULL")->result();
+  }
+
   public function tampil_id($id)
   {
     $result = $this->db->where('id_barang', $id)->get('tb_barang');

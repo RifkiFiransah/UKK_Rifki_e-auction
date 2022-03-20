@@ -16,7 +16,7 @@ class Data_lelang extends CI_Controller
   public function index()
   {
     $data['lelang'] = $this->M_lelang->tampil_data();
-    $data['barang'] = $this->M_barang->tampil_data()->result();
+    $data['barang'] = $this->M_barang->tampil_belum_lelang();
 
     $this->load->view('layout/header');
     $this->load->view('layout/sidebar');
@@ -61,8 +61,8 @@ class Data_lelang extends CI_Controller
   public function hapus($id)
   {
     // $where = ['id_lelang' => $id];
-    // $this->db->where($where)->delete('tb_lelang');
-    $this->db->query("DELETE FROM tb_lelang WHERE id_lelang=$id");
+    $this->M_lelang->delete_lelang($id, 'tb_lelang');
+    // $this->db->query("DELETE FROM tb_lelang WHERE id_lelang=$id")->row();
     $this->session->set_flashdata('pesan', '<div class="alert alert-danger alert-dismissible fade show" role="alert">
     Data Berhasil dihapus
     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -76,7 +76,6 @@ class Data_lelang extends CI_Controller
   public function tambah_data()
   {
     $id_barang = $this->input->post('id_barang');
-    $harga_akhir = $this->input->post('harga_akhir');
     $status = $this->input->post('status');
 
     $data = [

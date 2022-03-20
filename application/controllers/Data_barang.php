@@ -131,4 +131,11 @@ class Data_barang extends CI_Controller
     $this->M_barang->update_barang($where, $data, 'tb_barang');
     redirect(base_url('data_barang'));
   }
+
+  public function print_barang()
+  {
+    $data['barang'] = $this->M_barang->tampil_data()->result();
+
+    $this->load->view('print/print_barang', $data);
+  }
 }

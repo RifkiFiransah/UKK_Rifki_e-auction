@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="utf-8">
-  <title>Data Laporan</title>
+  <title>Data Laporan User Masyarakat</title>
 
   <!-- Normalize or reset CSS with your favorite library -->
   <link href="<?= base_url('assets/'); ?>css/sb-admin-2.min.css" rel="stylesheet">
@@ -69,38 +69,29 @@
   <!-- Each sheet element should have the class "sheet" -->
   <!-- "padding-**mm" is optional: you can set 10, 15, 20 or 25 -->
   <section class="sheet padding-15mm">
-    <h1 class="center" style="font-size: 2em; text-decoration: underline;margin-top: 20px;">LAPORAN~LELANG</h1>
-    <p class="center" style="font-size: 1.3em; color:#333;">Jl. sama dia jadian nya dengan orang lain</p>
+    <h1 class="center" style="font-size: 2em; text-decoration: underline;margin-top: 20px;">LAPORAN ~ USER/MASYARAKAT</h1>
     <div class="container-fluid">
 
-      <table class="table">
-        <thead>
+      <table class="table table-striped mt-3">
+        <tr>
+          <th>No</th>
+          <th>Nama User</th>
+          <th>Username</th>
+          <th>No Telepon</th>
+        </tr>
+
+        <?php $i = 1; ?>
+        <?php foreach ($user as $row) : ?>
           <tr>
-            <th style="width: 10px">No</th>
-            <th>Nama Barang</th>
-            <th>Tanggal Lelang</th>
-            <th>Harga Awal</th>
-            <th>Harga Akhir</th>
-            <th>Pemenang Lelang</th>
-            <th>No.Telepon</th>
+            <td><?= $i++; ?></td>
+            <td><?= $row->nama_lengkap; ?></td>
+            <td><?= $row->username; ?></td>
+            <td><?= $row->telp; ?></td>
           </tr>
-        </thead>
-        <tbody>
-          <?php $i = 1; ?>
-          <?php foreach ($history as $row) : ?>
-            <tr>
-              <td><?= $i++; ?></td>
-              <td><?= $row->nama_barang; ?></td>
-              <td><?= $row->tgl_lelang; ?></td>
-              <td><?= 'Rp. ' . number_format($row->harga_awal, 0, ',', '.'); ?></td>
-              <td><?= 'Rp. ' . number_format($row->harga_akhir, 0, ',', '.'); ?></td>
-              <td><?= $row->nama_lengkap; ?></td>
-              <td><?= $row->telp; ?></td>
-            </tr>
-          <?php endforeach; ?>
-        </tbody>
+        <?php endforeach; ?>
+      </table>
+
     </div>
-    </table>
   </section>
   <script type="text/javascript">
     window.print();

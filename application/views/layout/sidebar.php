@@ -9,9 +9,9 @@
       <!-- Sidebar - Brand -->
       <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
         <div class="sidebar-brand-icon">
-          <i class="fas fa-laugh-wink"></i>
+          <i class="fas fa-solid fa-motorcycle"></i>
         </div>
-        <div class="sidebar-brand-text mx-3">Lelang <sup>Online</sup></div>
+        <div class="sidebar-brand-text mx-2">Ngab <sup> auction</sup></div>
       </a>
 
       <!-- Divider -->
@@ -35,14 +35,14 @@
       <!-- Nav Item - Tables -->
       <li class="nav-item">
         <a class="nav-link" href="<?= base_url('data_barang'); ?>">
-          <i class="fas fa-fw fa-book"></i>
+          <i class="fas fa-solid fa-bookmark"></i>
           <span>Data Barang</span></a>
       </li>
 
       <?php if ($this->session->userdata('id_level') == 1) { ?>
         <li class="nav-item">
           <a class="nav-link" href="<?= base_url('data_lelang'); ?>">
-            <i class="fas fa-fw fa-chart-area"></i>
+            <i class="fas fa-duotone fa-dumpster"></i>
             <span>Data Lelang</span></a>
         </li>
       <?php } else if ($this->session->userdata('id_level') == 2) { ?>
@@ -107,7 +107,7 @@
             <!-- Nav Item - User Information -->
             <li class="nav-item dropdown no-arrow">
               <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Rifki Firansah</span>
+                <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?= $this->session->userdata('nama_petugas'); ?></span>
                 <img class="img-profile rounded-circle" src="<?= base_url('assets/'); ?>img/undraw_profile.svg">
               </a>
               <!-- Dropdown - User Information -->

@@ -18,6 +18,7 @@
       <label for="level">Level</label>
       <select class="form-control" name="id_level">
         <option value="">Pilih</option>
+        <option value="" disabled selected>!---------Pilih----------!</option>
         <?php foreach ($admin as $row) : ?>
           <option value="<?= $row->id_level; ?>"><?= $row->level; ?></option>
         <?php endforeach; ?>

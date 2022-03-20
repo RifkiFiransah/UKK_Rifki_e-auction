@@ -4,6 +4,7 @@
     <h1 class="h3 mb-0 text-gray-800">Data Masyarakat (<?= count($user); ?>)</h1>
   </div>
   <?= $this->session->flashdata('pesan'); ?>
+  <a class="btn btn-sm btn-warning" href="<?= base_url('data_user/print_user'); ?>" target="__blank"><i class="fa fa-print"></i> Cetak PDF</a>
 
   <table class="table table-striped mt-3">
     <tr>

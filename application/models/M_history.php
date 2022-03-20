@@ -20,8 +20,13 @@ class M_history extends CI_Model
   {
     // $result = $this->db->order_by('penawaran_harga', 'DESC')
     //   ->where('id_lelang', $id)
-    //   ->join('tb_masyarakat', 'tb_masyarakat.id_user=history_lelang.id_user')->get('history_lelang');
-    $result = $result = $this->db->query("SELECT * FROM history_lelang INNER JOIN tb_barang ON history_lelang.id_barang = tb_barang.id_barang INNER JOIN tb_lelang ON history_lelang.id_lelang = tb_lelang.id_lelang INNER JOIN tb_masyarakat ON history_lelang.id_user = tb_masyarakat.id_user WHERE tb_lelang.id_lelang=$id");
+    //   ->join('tb_masyarakat', 'tb_masyarakat.id_user=history_lelang.id_user')
+    //   ->join('tb_barang', 'tb_barang.id_barang=history_lelang.id_barang')
+    //   ->join('tb_lelang', 'tb_lelang.id_lelang=history_lelang.id_lelang')
+    //   ->get('history_lelang');
+    $result = $this->db->query("SELECT * FROM history_lelang INNER JOIN tb_barang ON history_lelang.id_barang = tb_barang.id_barang INNER JOIN tb_lelang ON history_lelang.id_lelang = tb_lelang.id_lelang INNER JOIN tb_masyarakat ON history_lelang.id_user = tb_masyarakat.id_user WHERE history_lelang.id_lelang = $id ORDER BY penawaran_harga DESC LIMIT 10");
+    // $result = $this->db->query("SELECT * FROM history_lelang INNER JOIN tb_masyarakat ON history_lelang.id_user = tb_masyarakat.id_user WHERE id_lelang=$id ORDER BY penawaran_harga DESC LIMIT 10");
+
     if ($result->num_rows() > 0) {
       return $result->result();
     } else {

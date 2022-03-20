@@ -22,6 +22,7 @@ class Auth extends CI_Controller
       redirect(base_url('auth'));
     } else {
       $this->session->set_userdata('username', $auth->username);
+      $this->session->set_userdata('nama_lengkap', $auth->nama_lengkap);
       $this->session->set_userdata('id_user', $auth->id_user);
 
       redirect(base_url('user'));
@@ -106,6 +107,7 @@ class Auth extends CI_Controller
       $auth = $this->M_auth->cek_login_a($username, $password);
       if ($auth) {
         $this->session->set_userdata('username', $auth->username);
+        $this->session->set_userdata('nama_petugas', $auth->nama_petugas);
         $this->session->set_userdata('id_petugas', $auth->id_petugas);
         $this->session->set_userdata('id_level', $auth->id_level);
         redirect(base_url('dashboard'));

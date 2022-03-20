@@ -65,4 +65,11 @@ class Data_user extends CI_Controller
 
     redirect(base_url('data_user'));
   }
+
+  public function print_user()
+  {
+    $data['user'] = $this->M_admin->tampil_user();
+
+    $this->load->view('print/print_user', $data);
+  }
 }

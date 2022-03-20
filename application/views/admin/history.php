@@ -69,8 +69,10 @@
   <!-- Each sheet element should have the class "sheet" -->
   <!-- "padding-**mm" is optional: you can set 10, 15, 20 or 25 -->
   <section class="sheet padding-15mm">
-    <h1 class="center" style="font-size: 2em; text-decoration: underline;margin-top: 20px;">LAPORAN LELANG</h1>
+    <h1 class="center" style="font-size: 2em; text-decoration: underline;margin-top: 20px;">LAPORAN~LELANG</h1>
     <div class="container-fluid">
+      <a href="<?= base_url('laporan/laporan'); ?>" class="btn btn-sm btn-primary" target="__blank"><i class="fas fa-print"></i> Cetak PDF</a>
+      <br><br>
       <table class="table">
         <thead>
           <tr>

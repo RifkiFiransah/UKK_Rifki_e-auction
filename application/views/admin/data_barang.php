@@ -6,6 +6,7 @@
 
   <?= $this->session->flashdata('pesan'); ?>
   <button class="btn btn-sm btn-primary" data-toggle="modal" data-target="#tambah-barang"><i class="fa fa-plus"></i> Tambah Data</button>
+  <a class="btn btn-sm btn-warning" href="<?= base_url('data_barang/print_barang'); ?>" target="__blank"><i class="fa fa-print"></i> Cetak PDF</a>
 
   <table class="table table-bordered mt-3">
     <tr>

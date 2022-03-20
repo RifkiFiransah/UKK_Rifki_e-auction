@@ -1,7 +1,7 @@
 <div class="container-fluid">
   <!-- Page Heading -->
   <div class="d-sm-flex align-items-center justify-content-between mb-4">
-    <h1 class="h3 mb-0 text-gray-800">Data lelang</h1>
+    <h1 class="h3 mb-0 text-gray-800">Data lelang (<?= count($lelang); ?>)</h1>
   </div>
   <?= $this->session->flashdata('pesan'); ?>
   <button class="btn btn-sm btn-primary" data-toggle="modal" data-target="#lelang-barang"><i class="fa fa-plus"></i> Tambah Data</button>
@@ -63,13 +63,14 @@
         </button>
       </div>
       <div class="modal-body">
-        <form action="<?= base_url('data_lelang/tambah_data'); ?>" method="POST" enctype="multipart/form-data">
+        <form action="<?= base_url('data_lelang/tambah_data'); ?>" method="POST">
           <div class="form-group">
-            <input type="hidden" name="id" id="id">
+            <!-- <input type="hidden" name="id" id="id"> -->
             <label for="namaBrng">Nama Barang</label>
             <select name="id_barang" id="namaBrng" class="form-control">
+              <option value="" disabled selected>!---------Pilih----------!</option>
               <?php foreach ($barang as $row) : ?>
-                <option value="<?= $row->id_barang; ?>"><?= $row->nama_barang; ?> | Harga Awal: <?= $row->harga_awal; ?></option>
+                <option value="<?= $row->id_barang; ?>"><?= $row->nama_barang; ?></option>
               <?php endforeach; ?>
             </select>
           </div>
@@ -84,6 +85,7 @@
           <div class="form-group">
             <label for="status">Status</label>
             <select name="status" id="status" class="form-control">
+              <option value="" disabled selected>!---------Pilih----------!</option>
               <option value="dibuka">dibuka</option>
               <option value="ditutup">ditutup</option>
             </select>

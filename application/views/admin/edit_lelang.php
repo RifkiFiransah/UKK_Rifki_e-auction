@@ -24,6 +24,7 @@
         <div class="form-group">
           <label for="status">Status</label>
           <select name="status" id="status" class="form-control">
+            <option value="" disabled selected>!---------Pilih----------!</option>
             <option value="dibuka">Dibuka</option>
             <option value="ditutup">Ditutup</option>
           </select>

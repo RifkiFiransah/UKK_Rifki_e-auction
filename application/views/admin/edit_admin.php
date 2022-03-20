@@ -19,6 +19,7 @@
       <div class="form-group">
         <label for="level">Level</label>
         <select class="form-control" name="id_level">
+          <option value="" disabled selected>!---------Pilih----------!</option>
           <option value="1">Petugas</option>
           <option value="2">Admin</option>
         </select>

@@ -44,36 +44,31 @@ class User extends CI_Controller
     $this->load->view('user/footer');
   }
 
-
-  public function profile($id)
-  {
-    $where = ['id_user' => $id];
-    $data['user'] = $this->M_auth->tampil_id($where)->result();
-
-    $this->load->view('user/profile', $data);
-    $this->load->view('user/footer');
-  }
-
   public function penawaran()
   {
+    $id_user = $this->input->post('id_user');
+    $id_barang = $this->input->post('id_barang');
+    $id_lelang = $this->input->post('id_lelang');
+    $penawaran = $this->input->post('penawaran');
+    $harting = $this->M_history->get_harga_tertinggi($id_lelang);
     if ($this->input->post('penawaran') > $this->input->post('harga_awal')) {
-      $id_user = $this->input->post('id_user');
-      $id_barang = $this->input->post('id_barang');
-      $id_lelang = $this->input->post('id_lelang');
-      $penawaran = $this->input->post('penawaran');
 
-      $data = [
-        'id_lelang' => $id_lelang,
-        'id_barang' => $id_barang,
-        'id_user' => $id_user,
-        'penawaran_harga' => $penawaran
-      ];
-      $this->M_history->penawaran_data($data, 'history_lelang');
+      if ($this->input->post('penawaran') > $harting->penawaran_harga) {
+        $data = [
+          'id_lelang' => $id_lelang,
+          'id_barang' => $id_barang,
+          'id_user' => $id_user,
+          'penawaran_harga' => $penawaran
+        ];
+        $this->M_history->penawaran_data($data, 'history_lelang');
 
-      $this->session->set_flashdata('pesan', "<script>alert('Penawaran Berhasil di ajukan')</script>");
+        $this->session->set_flashdata('pesan', "<script>alert('Penawaran Berhasil di ajukan')</script>");
+      } else {
+        $this->session->set_flashdata('pesan', "<script>alert('Penawaran Gagal Karena harga yang anda ajukan terlalu kecil')</script>");
+      }
     } else {
-      $this->session->set_flashdata('pesan', "<script>alert('Penawaran Gagal di ajukan')</script>");
+      $this->session->set_flashdata('pesan', "<script>alert('Penawaran Gagal Karena harga yang anda ajukan terlalu kecil')</script>");
     }
-    redirect(base_url('user'));
+    redirect(base_url('user/detail/' . $id_lelang));
   }
 }

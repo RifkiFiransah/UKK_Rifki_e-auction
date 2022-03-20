@@ -69,38 +69,32 @@
   <!-- Each sheet element should have the class "sheet" -->
   <!-- "padding-**mm" is optional: you can set 10, 15, 20 or 25 -->
   <section class="sheet padding-15mm">
-    <h1 class="center" style="font-size: 2em; text-decoration: underline;margin-top: 20px;">LAPORAN~LELANG</h1>
-    <p class="center" style="font-size: 1.3em; color:#333;">Jl. sama dia jadian nya dengan orang lain</p>
+    <h1 class="center" style="font-size: 2em; text-decoration: underline;margin-top: 20px;">LAPORAN ~ BARANG</h1>
     <div class="container-fluid">
 
-      <table class="table">
-        <thead>
+      <table class="table table-bordered mt-3">
+        <tr class="bg-warning text-light">
+          <th>No</th>
+          <th>Nama Barang</th>
+          <th>Tanggal</th>
+          <th>Harga Awal</th>
+          <th>Deskripsi</th>
+          <th>Gambar</th>
+        </tr>
+
+        <?php $i = 1; ?>
+        <?php foreach ($barang as $brng) : ?>
           <tr>
-            <th style="width: 10px">No</th>
-            <th>Nama Barang</th>
-            <th>Tanggal Lelang</th>
-            <th>Harga Awal</th>
-            <th>Harga Akhir</th>
-            <th>Pemenang Lelang</th>
-            <th>No.Telepon</th>
+            <td><?= $i++; ?></td>
+            <td><?= $brng->nama_barang; ?></td>
+            <td><?= $brng->tgl; ?></td>
+            <td>Rp. <?= number_format($brng->harga_awal, 0, ',', '.'); ?></td>
+            <td><?= $brng->deskripsi_barang; ?></td>
+            <td><img src="<?= base_url('assets/img/' . $brng->gambar); ?>" width="50"></td>
           </tr>
-        </thead>
-        <tbody>
-          <?php $i = 1; ?>
-          <?php foreach ($history as $row) : ?>
-            <tr>
-              <td><?= $i++; ?></td>
-              <td><?= $row->nama_barang; ?></td>
-              <td><?= $row->tgl_lelang; ?></td>
-              <td><?= 'Rp. ' . number_format($row->harga_awal, 0, ',', '.'); ?></td>
-              <td><?= 'Rp. ' . number_format($row->harga_akhir, 0, ',', '.'); ?></td>
-              <td><?= $row->nama_lengkap; ?></td>
-              <td><?= $row->telp; ?></td>
-            </tr>
-          <?php endforeach; ?>
-        </tbody>
+        <?php endforeach; ?>
+      </table>
     </div>
-    </table>
   </section>
   <script type="text/javascript">
     window.print();
