@@ -91,7 +91,7 @@
                 Laporan</div>
             </div>
             <div class="col-auto">
-              <i class="fas fa-fw fa-sign-out-alt fa-2x text-gray-300"></i>
+              <i class="fas fa-fw fa-print fa-2x text-gray-300"></i>
             </div>
           </div>
         </div>

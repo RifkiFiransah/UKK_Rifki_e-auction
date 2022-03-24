@@ -70,7 +70,7 @@
   <!-- "padding-**mm" is optional: you can set 10, 15, 20 or 25 -->
   <section class="sheet padding-15mm">
     <h1 class="center" style="font-size: 2em; text-decoration: underline;margin-top: 20px;">LAPORAN~LELANG</h1>
-    <p class="center" style="font-size: 1.3em; color:#333;">Jl. sama dia jadian nya dengan orang lain</p>
+    <p class="center" style="font-size: 1.3em; color:#333;">Jl. Raya Cikeusik Cidahu Kuningan Jawa Barat Indonesia</p>
     <div class="container-fluid">
 
       <table class="table">

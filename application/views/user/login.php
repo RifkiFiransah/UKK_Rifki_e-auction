@@ -41,11 +41,11 @@
             <?= $this->session->flashdata('pesan'); ?>
             <form action="<?= base_url('auth/login'); ?>" class="user mt-3 mb-3" method="post">
               <div class="form-group">
-                <input type="text" class="form-control" placeholder="Masukan Username" name="username" autofocus autocomplete="off">
+                <input type="text" class="form-control" placeholder="Masukan Username" name="username" autofocus autocomplete="off" required>
                 <?= form_error('username', '<div class="text-danger small ml-2">', '</div>'); ?>
               </div>
               <div class="form-group mt-md-4">
-                <input type="password" class="form-control" placeholder="Masukan Password" name="password">
+                <input type="password" class="form-control" placeholder="Masukan Password" name="password" required>
                 <?= form_error('password', '<div class="text-danger small ml-2">', '</div>'); ?>
               </div>
               <button type="submit" class="form-control btn btn-primary mt-2">Login</button>
@@ -57,10 +57,24 @@
     </div>
   </div>
 
-
-
-  <!-- Option 1: Bootstrap Bundle with Popper -->
+  <!-- Bootstrap core JavaScript-->
+  <script src="<?= base_url('assets/'); ?>vendor/jquery/jquery.min.js"></script>
   <script src="<?= base_url('assets/'); ?>vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Core plugin JavaScript-->
+  <script src="<?= base_url('assets/'); ?>vendor/jquery-easing/jquery.easing.min.js"></script>
+
+  <!-- Custom scripts for all pages-->
+  <script src="<?= base_url('assets/'); ?>js/sb-admin-2.min.js"></script>
+
+  <!-- Page level plugins -->
+  <script src="<?= base_url('assets/'); ?>vendor/chart.js/Chart.min.js"></script>
+
+  <!-- Page level custom scripts -->
+  <script src="<?= base_url('assets/'); ?>js/demo/chart-area-demo.js"></script>
+  <script src="<?= base_url('assets/'); ?>js/demo/chart-pie-demo.js"></script>
+
+
 </body>
 
 </html>

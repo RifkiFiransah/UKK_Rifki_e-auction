@@ -119,17 +119,52 @@ class Auth extends CI_Controller
           </button>
         </div>');
         redirect('auth/login_admin');
-        // switch ($auth->id_level) {
-        //   case 1:
-        //     redirect(base_url('dashboard'));
-        //     break;
-        //   case 2:
-        //     redirect(base_url('dashboard'));
-        //     break;
-        //   default:
-        //     redirect(base_url('auth/login_admin'));
-        //     break;
-        // }
+      }
+    }
+  }
+
+  public function registrasi_admin()
+  {
+    $this->load->view('layout/header');
+    $this->load->view('admin/registrasi_admin');
+  }
+
+  public function tambah_admin()
+  {
+    $this->form_validation->set_rules('username', 'Username', 'required');
+    $this->form_validation->set_rules('nama_admin', 'Nama_admin', 'required');
+    $this->form_validation->set_rules('password', 'Password', 'required');
+    if ($this->form_validation->run() == false) {
+      $this->load->view('layout/header');
+      $this->load->view('admin/registrasi_admin');
+    } else {
+      $username = $this->input->post('username');
+      $cekUsername = $this->M_admin->cekUsername($username);
+      if (!$cekUsername) {
+        $data = [
+          'nama_petugas' => $this->input->post('nama_admin'),
+          'username' => $this->input->post('username'),
+          'password' => md5($this->input->post('password')),
+          'id_level'  => '2'
+        ];
+        $this->db->insert('tb_petugas', $data);
+        $this->session->set_flashdata('pesan', '<div class="alert alert-success alert-dismissible fade show mt-2" role="alert">
+      Registrasi Berhasil
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>');
+
+        redirect(base_url('auth/login_admin'));
+      } else {
+        $this->session->set_flashdata('pesan', '<div class="alert alert-danger alert-dismissible fade show mt-2" role="alert">
+      Gagal Username Sudah Terdaftar
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>');
+
+        redirect(base_url('auth/registrasi_admin'));
       }
     }
   }

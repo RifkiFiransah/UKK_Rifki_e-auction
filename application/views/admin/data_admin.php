@@ -4,7 +4,7 @@
   </div>
 
   <a href="<?= base_url('data_admin/tambah'); ?>" class="btn btn-sm btn-primary"><i class="fa fa-plus"></i> Tambah Data</a>
-  <a class="btn btn-sm btn-warning" href="<?= base_url(); ?>"><i class="fa fa-print"></i> Cetak PDF</a>
+  <!-- <a class="btn btn-sm btn-warning" href=""><i class="fa fa-print"></i> Cetak PDF</a> -->
   <?= $this->session->flashdata('pesan'); ?>
 
   <table class="table table-bordered mt-3">

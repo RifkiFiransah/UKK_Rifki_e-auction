@@ -14,21 +14,25 @@
               <div class="col-lg-12">
                 <div class="p-5">
                   <div class="text-center">
-                    <h1 class="h4 text-gray-900 mb-4"><i class="fas fa-duotone fa-motorcycle"></i> Login Administrator</h1>
+                    <h1 class="h4 text-gray-900 mb-4"><i class="fas fa-duotone fa-motorcycle"></i> Registrasi Administrator</h1>
                   </div>
                   <?= $this->session->flashdata('pesan'); ?>
-                  <form method="post" action="<?= base_url('auth/administrator'); ?>" class="user">
+                  <form method="post" action="<?= base_url('auth/tambah_admin'); ?>" class="user">
                     <div class="form-group">
-                      <input type="tet" class="form-control form-control-user" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Masukan username anda..." name="username" autocomplete="off" autofocus>
+                      <input type="text" class="form-control form-control-user" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Masukan nama admin..." name="nama_admin" autocomplete="off" autofocus>
+                      <?= form_error('nama_admin', '<div class="text-danger small ml-2">', '</div>'); ?>
+                    </div>
+                    <div class="form-group">
+                      <input type="text" class="form-control form-control-user" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Masukan username anda..." name="username" autocomplete="off" autofocus>
                       <?= form_error('username', '<div class="text-danger small ml-2">', '</div>'); ?>
                     </div>
                     <div class="form-group">
                       <input type="password" class="form-control form-control-user" id="exampleInputPassword" placeholder="Password..." name="password">
                       <?= form_error('password', '<div class="text-danger small ml-2">', '</div>'); ?>
                     </div>
-                    <button type="submit" class="btn btn-primary form-control">Login</button>
-                    <br>
-                    <!-- <a href="" class="">Registrasi Administrator</a> -->
+                    <button type="submit" class="btn btn-primary form-control">Register</button>
+
+                    <a href="<?= base_url('auth/login_admin'); ?>">Kembali ke Login</a>
                   </form>
                 </div>
               </div>

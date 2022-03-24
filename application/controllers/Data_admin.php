@@ -81,18 +81,33 @@ class Data_admin extends CI_Controller
 
   public function hapus($id)
   {
-    $where = ['id_petugas' => $id];
+    if ($id == $this->session->userdata('id_petugas')) {
+      $where = ['id_petugas' => $id];
 
-    $this->db->where($where);
-    $this->db->delete('tb_petugas');
+      $this->db->where($where);
+      $this->db->delete('tb_petugas');
+      $this->session->set_flashdata('pesan', '<div class="alert alert-danger alert-dismissible fade show mt-2" role="alert">
+        Data Admin Anda Berhasil Dihapus
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>');
 
-    $this->session->set_flashdata('pesan', '<div class="alert alert-danger alert-dismissible fade show mt-2" role="alert">
-      Data Berhasil Dihapus
-      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-        <span aria-hidden="true">&times;</span>
-      </button>
-    </div>');
-    redirect(base_url('data_admin'));
+      redirect(base_url('auth/login_admin'));
+    } else {
+      $where = ['id_petugas' => $id];
+
+      $this->db->where($where);
+      $this->db->delete('tb_petugas');
+
+      $this->session->set_flashdata('pesan', '<div class="alert alert-danger alert-dismissible fade show mt-2" role="alert">
+        Data Berhasil Dihapus
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>');
+      redirect(base_url('data_admin'));
+    }
   }
 
   public function edit($id)

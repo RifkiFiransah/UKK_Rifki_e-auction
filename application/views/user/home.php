@@ -56,7 +56,7 @@
         <div class="navbar-nav">
           <a class="nav-link active" aria-current="page" href="<?= base_url(); ?>">Daftar Lelang</a>
           <a class="nav-link active" aria-current="page" href="<?= base_url('user/history/' . $this->session->userdata('id_user')); ?>">History</a>
-          <a href="<?= base_url('user/pemenang'); ?>" class="nav-link active">Daftar Pemenang</a>
+          <a href="<?= base_url('user/pemenang'); ?>" class="nav-link active"> Daftar Pemenang</a>
         </div>
 
       </div>
