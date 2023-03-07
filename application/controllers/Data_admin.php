@@ -86,6 +86,8 @@ class Data_admin extends CI_Controller
 
       $this->db->where($where);
       $this->db->delete('tb_petugas');
+      $this->session->sess_destroy();
+
       $this->session->set_flashdata('pesan', '<div class="alert alert-danger alert-dismissible fade show mt-2" role="alert">
         Data Admin Anda Berhasil Dihapus
         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
